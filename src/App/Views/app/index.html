@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header">
+            <h2 class="pageheader-title">Application Dashboard </h2>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Application</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- end pageheader  -->
+<!-- ============================================================== -->
+<div class="ecommerce-widget">
+    <div class="row">
+        <!-- ============================================================== -->
+  
+        <!-- ============================================================== -->
+
+                      <!-- recent orders  -->
+        <!-- ============================================================== -->
+        <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+            <div class="card">
+                <h5 class="card-header">App Informations</h5>
+                <div class="card-body p-0">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"> <b>Application name:</b> {{app.app_name}}</li>
+                        <li class="list-group-item"> <b>Host:</b> <a target="blank" href="http://{{host_ip}}:{{app.app_port}}">http://{{host_ip}}:{{app.app_port}}</a></li>
+                        <li class="list-group-item"> <b>IP:</b> {{host_ip}}</li>
+                        <li class="list-group-item"> <b>Port:</b> {{app.app_port}}</li>
+                        <li class="list-group-item"> <b>Dir:</b> Home{{app.app_root}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end recent orders  -->
+
+
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- customer acquistion  -->
+        <!-- ============================================================== -->
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 serverManager">
+            <div class="card">
+                <h5 class="card-header">Server Manager <span class="badge-dot {% if app.app_status == 1 %} badge-success {% else %} badge-danger {% endif %} mr-1"></span></h5>
+                <div class="card-body">
+                    
+                    <div class="text-center">
+                        <form method="POST" action="serverManager" class="form-inline" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 10px;">
+                            <input type="hidden" name="server_id" value="{{ app.app_id }}">
+                            <input type="hidden" name="server_root" value="{{ app.app_rootfull }}">
+                            <input type="hidden" name="server_port" value="{{ app.app_port }}">
+                            <button type="submit" name='manager' value='start' class="btn btn-outline-success" {% if app.app_status == 1 %} disabled {% endif %}><i class="fas fa-play mr-2" style="margin: 0 !important;"></i></button>
+                            <button type="submit" name='manager' value='restart' class="btn btn-outline-light"><i class="fas fa-undo mr-2" style="margin: 0 !important;"></i></button>
+                            <button type="submit" name='manager' value='stop' class="btn btn-outline-danger"><i class="fas fa-stop mr-2" style="margin: 0 !important;"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end customer acquistion  -->
+        <!-- ============================================================== -->
+    </div>
+    
+</div>
